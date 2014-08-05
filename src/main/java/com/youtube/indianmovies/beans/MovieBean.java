@@ -6,9 +6,10 @@
 
 package com.youtube.indianmovies.beans;
 
-import javax.inject.Named;
+import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.inject.Named;
 
 /**
  *
@@ -17,7 +18,7 @@ import javax.faces.bean.SessionScoped;
 
 @ManagedBean(name="movieBean")
 @SessionScoped
-public class MovieBean {
+public class MovieBean implements Serializable{
 
     /**
      * Creates a new instance of MovieBean

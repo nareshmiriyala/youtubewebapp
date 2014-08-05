@@ -32,7 +32,7 @@ public class Search {
      */
     private static final String PROPERTIES_FILENAME = "youtube.properties";
 
-    private static final long NUMBER_OF_VIDEOS_RETURNED = 25;
+    private static final long NUMBER_OF_VIDEOS_RETURNED = 5;
     private static HashMap<String,String> moviesMap=null;
     /**
      * Define a global instance of a Youtube object, which will be used
@@ -82,8 +82,12 @@ public class Search {
             // {{ https://cloud.google.com/console }}
             String apiKey = properties.getProperty("youtube.apikey");
             search.setKey(apiKey);
-            search.setQ(queryTerm);
-
+           search.setQ("movies");
+           search.setQ("movie");
+         //  search.setQ("telugu");
+            search.setVideoType("movie");
+            
+            search.setOrder("viewCount");
             // Restrict the search results to only include videos. See:
             // https://developers.google.com/youtube/v3/docs/search/list#type
             search.setType("video");
