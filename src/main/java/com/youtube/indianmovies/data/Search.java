@@ -141,17 +141,17 @@ public class Search {
         if (!iteratorSearchResults.hasNext()) {
             System.out.println(" There aren't any results for your query.");
         }
-
+moviesMap=new HashMap<>();
         while (iteratorSearchResults.hasNext()) {
 
             SearchResult singleVideo = iteratorSearchResults.next();
             ResourceId rId = singleVideo.getId();
-
+            
             // Confirm that the result represents a video. Otherwise, the
             // item will not contain a video ID.
             if (rId.getKind().equals("youtube#video")) {
                 Thumbnail thumbnail = singleVideo.getSnippet().getThumbnails().getDefault();
-               moviesMap=new HashMap<>();
+               
                moviesMap.put(rId.getVideoId(),singleVideo.getSnippet().getTitle());
                 System.out.println(" Video Id:" + rId.getVideoId());
                 System.out.println(" Title: " + singleVideo.getSnippet().getTitle());

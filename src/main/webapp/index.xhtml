@@ -3,26 +3,31 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Search Movies</title>
     </h:head>
     <h:body>
        
     	<h3>Search for Movies</h3>
-    	<h:form>
+        <h:form>
     	   <h:inputText id="searchString" value="#{searchMoviesBean.searchString}"></h:inputText>
     	 <h:commandButton value="search movies">
     		 <f:ajax execute="searchString" render="output" />
     	   </h:commandButton>
-           <h2><h:outputText id="output1" value="#{searchMoviesBean.movies}" /></h2>
-       <h:panelGrid id="output">
-        <h:panelGroup>
-               <c:forEach  items="${searchMoviesBean.movies}" var="entry">
-                <li>Key: ${entry.key}, value: ${entry.value}</li>
-              </c:forEach>
-                  </h:panelGroup>
-       </h:panelGrid>
+           <h:panelGrid id="output" columns="25">
+               <h:panelGroup>
+                   <ui:repeat  value="#{searchMoviesBean.list}" var="t">
+               <ui:repeat value="#{t}" var="s">
+                   <iframe width="420" height="345"
+src="#{s.name}">
+</iframe>          
+      
+               </ui:repeat>
+           </ui:repeat>
+                   </h:panelGroup>
+               </h:panelGrid>  
     	</h:form>
    
     </h:body>
