@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Search Movies</title>
+    </h:head>
+    <h:body>
+       
+    	<h3>Search for Movies</h3>
+    	<h:form>
+    	   <h:inputText id="searchString" value="#{searchMoviesBean.searchString}"></h:inputText>
+    	 <h:commandButton value="search movies">
+    		 <f:ajax execute="searchString" render="output" />
+    	   </h:commandButton>
+           <h2><h:outputText id="output1" value="#{searchMoviesBean.movies}" /></h2>
+       <h:panelGrid id="output">
+        <h:panelGroup>
+               <c:forEach  items="${searchMoviesBean.movies}" var="entry">
+                <li>Key: ${entry.key}, value: ${entry.value}</li>
+              </c:forEach>
+                  </h:panelGroup>
+       </h:panelGrid>
+    	</h:form>
+   
+    </h:body>
+</html>
+
